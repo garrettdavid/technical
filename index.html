@@ -1,0 +1,176 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- TODO: add title --><title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <nav id="navbar">
+    <header>CSS Technical Documentation</header>
+    <a class="nav-link" href="#Introduction">Introduction</a>
+    <a class="nav-link" href="#Syntax">Syntax</a>
+    <a class="nav-link" href="#CSS_Selectors">CSS Selectors</a>
+    <a class="nav-link" href="#CSS_Values_and_Units">CSS Values and Units</a>
+    <a class="nav-link" href="#The_Box_Model">The Box Model</a>
+    <a class="nav-link" href="#Reference">Reference</a>
+  </nav>
+
+  <main id="main-doc">
+    <section id="Introduction" class="main-section">
+      <header>Introduction</header>
+      <p>CSS (Cascading Style Sheets) is used to style and lay out web pages — for example, to alter the font, colour, size and spacing of your content, split it into multiple columns, or add animations and other decorative features. This module gets you started on the path to CSS mastery with the basics of how it works, including selectors and properties, writing CSS rules, applying CSS to HTML, how to specify length, colour, and other units in CSS, cascade and inheritance, and debugging CSS.</p>
+    </section>
+
+    <section id="Syntax" class="main-section">
+      <header>Syntax</header>
+      <p>At its most basic level, CSS consists of two building blocks:</p>
+      <ul>
+        <li>Properties: Human-readable identifiers that indicate which stylistic features (e.g. font, width, background color) you want to change.</li>
+        <li>Values: Each specified property is given a value, which indicates how you want to change those stylistic features (e.g. what you want to change the font, width or background color to.)</li>
+      </ul>
+      <p>A property paired with a value is called a CSS declaration. CSS declarations are put within CSS Declaration Blocks. And finally, CSS declaration blocks are paired with selectors to produce CSS Rulesets (or CSS Rules).</p>
+      <code>
+        <pre>
+            &lt;body&gt;
+              &lt;h1&gt;Hello World!&lt;&#47;h1&gt;
+              &lt;p&gt;This is my first CSS example&lt;&#47;p&gt;
+              &lt;ul&gt;
+                &lt;li&gt;This is&lt;&#47;li&gt;
+                &lt;li&gt;a list&lt;&#47;li&gt;
+              &lt;&#47;ul&gt;
+            &lt;&#47;body&gt;
+        </pre>
+      </code>
+      <code>
+        <pre>
+            h1 {
+              colour: blue;
+              background-color: yellow;
+              border: 1px solid black;
+            }
+            
+            p {
+              color: red;
+            }
+            
+            p, li {
+              text-decoration: underline;
+            }
+        </pre>
+      </code>
+    </section>
+
+    <section id="CSS_Selectors" class="main-section">
+      <header>CSS Selectors</header>
+      <p>Selectors can be divided into the following categories:</p>
+      <ul>
+        <li>Simple selectors: Match one or more elements based on element type, class, or id.</li>
+        <li>Attribute selectors: Match one or more elements based on their attributes/attribute values.</li>
+        <li>Pseudo-classes: Match one or more elements that exist in a certain state, such as an element that is being hovered over by the mouse pointer, or a checkbox that is currently disabled or checked, or an element that is the first child of its parent in the DOM tree.</li>
+        <li>Pseudo-elements: Match one or more parts of content that are in a certain position in relation to an element, for example the first word of each paragraph, or generated content appearing just before an element.</li>
+        <li>Combinators: These are not exactly selectors themselves, but ways of combining two or more selectors in useful ways for very specific selections. So for example, you could select only paragraphs that are direct descendants of divs, or paragraphs that come directly after headings.</li>
+        <li>Multiple selectors: Again, these are not separate selectors; the idea is that you can put multiple selectors on the same CSS rule, separated by commas, to apply a single set of declarations to all the elements selected by those selectors.</li>
+      </ul>
+    </section>
+
+    <section id="CSS_Values_and_Units" class="main-section">
+      <header>CSS Values and Units</header>
+      <p>There are many types of CSS property values to consider, from numerical values to colors to functions that perform a certain action (like embedding a background image, or rotating an element.) Some of these rely on particular units for specifying the exact values they are representing — do you want your box to be 30 pixels wide, or 30 centimeters, or 30 ems? In this guide, we look at more common values like length, color, and simple functions, as well as exploring less common units like degrees, and even unitless numerical values.</p>
+
+      <p>You'll use length/size units all the time in your CSS for layouts, typography and more. Let's look at a simple example — first the HTML:</p>
+
+      <code>
+        <pre>
+            &lt;p&gt;This is a paragraph.&lt;&#47;p&gt;
+        </pre>
+      </code>
+
+      <p>And the CSS file:</p>
+
+      <code>
+        <pre>
+            p {
+              margin: 5px;
+              padding: 10px;
+              border: 2px solid black;
+              background-color: cyan;
+            }
+        </pre>
+      </code>
+
+      <p>You can also use percentage values to specify most things that can be specified by specific numeric values. This allows us to create, for example, boxes whose width will always shift to be a certain percentage of their parent container's width. This can be compared to boxes that have their width set to a certain unit value (like px or ems), which will always stay the same length, even if their parent container's width changes. Let's show an example to explain this. First, two similar boxes, marked up in HTML:</p>
+
+      <code>
+        <pre>
+            &lt;div&gt;
+              &lt;div class="boxes"&gt;Fixed width layout with pixels&lt;&#47;div&gt;
+              &lt;div class="boxes"&gt;Liquid layout with percentages&lt;&#47;div&gt;
+            &lt;&#47;div&gt;
+        </pre>
+      </code>
+
+      <p>And now some CSS to style these boxes:</p>
+
+      <code>
+        <pre>
+            div .boxes {
+              margin: 10px;
+              font-size: 200%;
+              color: white;
+              height: 150px;
+              border: 2px solid black;
+            }
+            
+            .boxes:nth-child(1) {
+              background-color: red;
+              width: 650px;
+            }
+            
+            .boxes:nth-child(2) {
+              background-color: blue;
+              width: 75%;
+            }
+        </pre>
+      </code>
+    </section>
+
+    <section id="The_Box_Model" class="main-section">
+      <header>The Box Model</header>
+      <p>The CSS box model is the foundation of layout on the Web — each element is represented as a rectangular box, with the box's content, padding, border, and margin built up around one another like the layers of an onion. As a browser renders a web page layout, it works out what styles are applied to the content of each box, how big the surrounding onion layers are, and where the boxes sit in relation to one another. Before understanding how to create CSS layouts, you need to understand the box model — this is what we'll look at in this article.</p>
+
+      <p>Every element within a document is structured as a rectangular box inside the document layout, the size and "onion layers" of which can be tweaked using some specific CSS properties. The relevant properties are as follows:</p>
+
+      <ul>
+
+        <li>width and height: The width and height properties set the width and height of the content box, which is the area in which the content of the box is displayed — this content includes both text content set inside the box, and other boxes representing nested child elements.</li>
+
+        <li>padding: Padding refers to the inner margin of a CSS box — between the outer edge of the content box and the inner edge of the border. The size of this layer can be set on all four sides at once with the padding shorthand property, or one side at a time with the padding-top, padding-right, padding-bottom and padding-left properties.</li>
+
+        <li>border: The border of a CSS box sits between the outer edge of the padding and the inner edge of the margin. By default the border has a size of 0 — making it invisible — but you can set the thickness, style and color of the border to make it appear. The border shorthand property allows you to set all of these on all four sides at once, for example border: 1px solid black.</li>
+
+        <li>margin: The margin surrounds a CSS box, and pushes up against other CSS boxes in the layout. It behaves rather like padding; the shorthand property is margin and the individual properties are margin-top, margin-right, margin-bottom, and margin-left.</li>
+
+      </ul>
+
+    </section>
+    <section id="Reference" class="main-section">
+      <header>Reference</header>
+      <p>All information on this page from <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS">Mozilla Developer Network</a></p>
+    </section>
+  </main>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>
